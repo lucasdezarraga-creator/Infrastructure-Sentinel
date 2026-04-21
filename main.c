@@ -38,6 +38,8 @@ int main() {
     keypad(stdscr, TRUE);
 
     while(1){
+        time_t cd = time(NULL);
+
         srand(time(NULL));
         erase();
         int maxX, maxY;
@@ -65,7 +67,7 @@ int main() {
         mvprintw(6, startX, "----------------------------------------");
         attroff(COLOR_PAIR(5));
 
-        time_t cd = time(NULL);
+        
         if(difftime(cd, lastRestCooldown) < REST_COOLDOWN){
             attron(COLOR_PAIR(2));
             mvprintw(maxY-3, 2, "WARNING: Reboot on cooldown.");
@@ -84,7 +86,6 @@ int main() {
 
         refresh();
 
-        time_t cd = time(NULL);
         int c = getch();
         if(c == '1'){
             if(difftime(cd, grids[0].coolDown) >= COOLDOWN){
@@ -146,6 +147,18 @@ void initializeGrids(PowerStations grids[]){
     grids[0].status = 0;
 
     strcpy(grids[1].nodeName, "Google HQ");
+    grids[1].load = 55;
+    grids[1].status = 0;
+
+    strcpy(grids[1].nodeName, "Intel HQ");
     grids[1].load = 65;
+    grids[1].status = 0;
+
+    strcpy(grids[1].nodeName, "Apple HQ");
+    grids[1].load = 50;
+    grids[1].status = 0;
+
+    strcpy(grids[1].nodeName, "HP HQ");
+    grids[1].load = 40;
     grids[1].status = 0;
 }
