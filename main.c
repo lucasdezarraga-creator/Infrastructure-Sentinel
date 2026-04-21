@@ -65,7 +65,15 @@ int main() {
         mvprintw(6, startX, "----------------------------------------");
         attroff(COLOR_PAIR(5));
 
-        mvprintw(maxY-3, 2, "CONTROLS: [1-%d] Balance Load | [R] Reset Grid | [Q] Shutdown", GRID_SIZE);
+        time_t cd = time(NULL);
+        if(difftime(cd, lastRestCooldown) < REST_COOLDOWN){
+            attron(COLOR_PAIR(2));
+            mvprintw(maxY-3, 2, "WARNING: Reboot on cooldown.");
+            attroff(COLOR_PAIR(2));
+        } else {
+            mvprintw(maxY-3, 2, "CONTROLS: [1-%d] Balance Load | [R] Reset Grid | [Q] Shutdown", GRID_SIZE);
+        }
+        
 
         updateGrids(grids, 2);
         drawGrids(grids, 2, startX - 3, 7);
