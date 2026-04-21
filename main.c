@@ -84,7 +84,7 @@ void updateGrids(PowerStations grids[], int size){
 
 void drawGrids(PowerStations grids[], int size, int startX, int startY){
     for(int i = 0; i < size; i++){
-        mvprintw((startY + i), startX, "%d. [%-12s]      [%3d%%]      ", grids[i].nodeName, grids[i].load);
+        mvprintw((startY + i), startX, "%d. [%-12s]      [%3d%%]      ", (i + 1) ,grids[i].nodeName, grids[i].load);
 
         if(grids[i].status == 2) {attron(COLOR_PAIR(1)); printw("DANGER"); attroff(COLOR_PAIR(1));}
         else if (grids[i].status == 1){attron(COLOR_PAIR(2)); printw("WARNING"); attroff(COLOR_PAIR(2));}
