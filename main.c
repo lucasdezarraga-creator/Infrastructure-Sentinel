@@ -1,4 +1,6 @@
 #define GRID_SIZE 2
+#define COOLDOWN 4
+#define REST_COOLDOWN 10
 
 #include <curses.h>
 #include<time.h>
@@ -9,6 +11,7 @@ typedef struct {
     char nodeName[20];
     int load; //0-100
     int status; // 0 - OK, 1 - Warning, 2 - Danger
+    time_t coolDown; 
 } PowerStations;
 
 void updateGrids(PowerStations grids[], int size);
@@ -17,6 +20,8 @@ void initializeGrids(PowerStations grids[]);
 
 int main() {
     PowerStations grids[GRID_SIZE];
+    time_t lastRestCooldown = 0;
+
     initscr();
     noecho();
     curs_set(0);
@@ -71,10 +76,26 @@ int main() {
 
         refresh();
 
+        time_t cd = time(NULL);
         int c = getch();
-        if(c == '1'){grids[0].load -= 15;}
-        else if (c == '2') {grids[1].load -= 15;}
-        else if (c == 'r' || c == 'R') {initializeGrids(grids);}
+        if(c == '1'){
+            if(difftime(cd, grids[0].coolDown) >= COOLDOWN){
+                grids[0].load -= 15;
+                grids[0].coolDown = cd;
+            }  
+        } else if (c == '2') {
+            if(difftime(cd, grids[1].coolDown) >= COOLDOWN){
+                grids[1].load -= 15;
+                grids[1].coolDown = cd;
+            }
+        } else if (c == 'r' || c == 'R') {
+            time_t cd = time(NULL);
+            if(difftime(cd, lastRestCooldown) >= REST_COOLDOWN){
+                initializeGrids(grids);
+                lastRestCooldown = cd;
+            }
+            
+        }
         if (c == 'q' || c == 'Q'){ break; }
         if(c == KEY_RESIZE){ resize_term(0,0); }
     }
@@ -87,6 +108,7 @@ void updateGrids(PowerStations grids[], int size){
     for(int i = 0; i < size; i++){
         int jitter = (rand() % 5) - 2;
         if(grids[i].load >= 80){ jitter++;}
+        if((rand() % 100) == 0){ jitter += 20; }
         grids[i].load += jitter;
 
         if (grids[i].load < 0) {grids[i].load = 0;}
