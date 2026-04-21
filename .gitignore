@@ -53,3 +53,13 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# LaTeX junk
+*.aux
+*.log
+*.out
+*.toc
+*.pdf
+*.synctex.gz
+*.fls
+*.fdb_latexmk
