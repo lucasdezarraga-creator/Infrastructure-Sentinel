@@ -77,8 +77,8 @@ int main() {
         }
         
 
-        updateGrids(grids, 2);
-        drawGrids(grids, 2, startX - 3, 7);
+        updateGrids(grids, GRID_SIZE);
+        drawGrids(grids, GRID_SIZE, startX - 3, 7);
 
         attron(COLOR_PAIR(5));
         mvprintw(7 + GRID_SIZE, startX, "----------------------------------------");
