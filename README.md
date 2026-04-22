@@ -6,7 +6,8 @@ A real-time, terminal-based power grid monitoring dashboard built in C.
 Infrastructure Sentinel simulates a high-stakes Human-Machine Interface (HMI) for managing electrical grid loads. It features stochastic telemetry drift, random power surges, and hardware-inspired command rate limiting.
 
 ## 📸 Preview
-![Dashboard Preview](image_0c1284.png) 
+!Dashboard:
+<img width="645" height="326" alt="InfrastructureSentielDashboard" src="https://github.com/user-attachments/assets/bc0a47a7-f56c-40bb-ba4d-40e9c81c3d1b" />
 *Custom cyan/blue interface designed for high-fidelity industrial monitoring.*
 
 ## 🛠️ Key Technical Features
