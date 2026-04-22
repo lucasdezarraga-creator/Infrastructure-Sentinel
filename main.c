@@ -1,4 +1,4 @@
-#define GRID_SIZE 2
+#define GRID_SIZE 5
 #define COOLDOWN 4
 #define REST_COOLDOWN 10
 
