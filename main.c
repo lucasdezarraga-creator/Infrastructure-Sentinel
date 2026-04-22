@@ -155,15 +155,15 @@ void initializeGrids(PowerStations grids[]){
     grids[1].load = 55;
     grids[1].status = 0;
 
-    strcpy(grids[1].nodeName, "Intel HQ");
-    grids[1].load = 65;
-    grids[1].status = 0;
+    strcpy(grids[2].nodeName, "Intel HQ");
+    grids[2].load = 65;
+    grids[2].status = 0;
 
-    strcpy(grids[1].nodeName, "Apple HQ");
-    grids[1].load = 50;
-    grids[1].status = 0;
+    strcpy(grids[3].nodeName, "Apple HQ");
+    grids[3].load = 50;
+    grids[3].status = 0;
 
-    strcpy(grids[1].nodeName, "HP HQ");
-    grids[1].load = 40;
-    grids[1].status = 0;
+    strcpy(grids[4].nodeName, "HP HQ");
+    grids[4].load = 40;
+    grids[4].status = 0;
 }
