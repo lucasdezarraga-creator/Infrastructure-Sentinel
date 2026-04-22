@@ -105,6 +105,11 @@ int main() {
             }
             
         }
+
+        if(grids[0].load == 100 || grids[1].load == 100 || grids[2].load == 100 || grids[3].load == 100 || grids[4].load == 100 ){
+            break;
+        }
+
         if (c == 'q' || c == 'Q'){ break; }
         if(c == KEY_RESIZE){ resize_term(0,0); }
     }
