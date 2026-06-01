@@ -8,6 +8,7 @@ Infrastructure Sentinel simulates a high-stakes Human-Machine Interface (HMI) fo
 ## 📸 Preview
 The dashboard:
 <img width="624" height="336" alt="InfrastructureSentinelDashboard" src="https://github.com/user-attachments/assets/c26f20c6-8099-4d41-be36-c146224e783e" />
+---
 *Custom cyan/blue interface designed for high-fidelity industrial monitoring.*
 
 ## 🛠️ Key Technical Features
