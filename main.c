@@ -22,6 +22,8 @@ int main() {
     PowerStations grids[GRID_SIZE];
     time_t lastRestCooldown = 0;
 
+    srand(time(NULL));
+
     initscr();
     noecho();
     curs_set(0);
@@ -40,7 +42,6 @@ int main() {
     while(1){
         time_t cd = time(NULL);
 
-        srand(time(NULL));
         erase();
         int maxX, maxY;
         getmaxyx(stdscr, maxY, maxX);
@@ -156,5 +157,6 @@ void initializeGrids(PowerStations grids[]){
         strcpy(grids[i].nodeName, nodes[i]);
         grids[i].load = loads[i];
         grids[i].status = 0;
+        grids[i].coolDown = 0;
     }
 }
