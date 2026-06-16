@@ -89,7 +89,7 @@ int main() {
         int c = getch();
 
         char targetNode = c - '1';
-        if(targetNode <= '0' && targetNode <= GRID_SIZE){
+        if(targetNode <= '0' && targetNode < GRID_SIZE){
             if(difftime(cd, grids[targetNode].coolDown) >= COOLDOWN){
                 grids[targetNode].load -= 15;
                 grids[targetNode].coolDown = cd;

@@ -8,6 +8,7 @@ Infrastructure Sentinel simulates a high-stakes Human-Machine Interface (HMI) fo
 ## 📸 Preview
 The dashboard:
 <img width="624" height="336" alt="InfrastructureSentinelDashboard" src="https://github.com/user-attachments/assets/c26f20c6-8099-4d41-be36-c146224e783e" />
+---
 *Custom cyan/blue interface designed for high-fidelity industrial monitoring.*
 
 ## 🛠️ Key Technical Features
@@ -20,6 +21,6 @@ The dashboard:
 For a full deep-dive into the technical hurdles (WinMain entry point conflicts, linker flags, and spatial alignment logic), check out the [Full Project Documentation (PDF)](documentation.pdf).
 
 ## ⌨️ Controls
-- `1-2`: Balance specific nodes (3s cooldown)
+- `1-5`: Balance specific nodes (3s cooldown)
 - `R`: Full system reboot (10s cooldown)
 - `Q`: Safe shutdown (ncurses cleanup)
