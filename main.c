@@ -87,28 +87,31 @@ int main() {
         refresh();
 
         int c = getch();
-        if(c == '1'){
-            if(difftime(cd, grids[0].coolDown) >= COOLDOWN){
-                grids[0].load -= 15;
-                grids[0].coolDown = cd;
-            }  
-        } else if (c == '2') {
-            if(difftime(cd, grids[1].coolDown) >= COOLDOWN){
-                grids[1].load -= 15;
-                grids[1].coolDown = cd;
+
+        char targetNode = c - '1';
+        if(targetNode <= '0' && targetNode <= GRID_SIZE){
+            if(difftime(cd, grids[targetNode].coolDown) >= COOLDOWN){
+                grids[targetNode].load -= 15;
+                grids[targetNode].coolDown = cd;
             }
-        } else if (c == 'r' || c == 'R') {
+        }
+
+        if (c == 'r' || c == 'R'){
             time_t cd = time(NULL);
             if(difftime(cd, lastRestCooldown) >= REST_COOLDOWN){
                 initializeGrids(grids);
                 lastRestCooldown = cd;
             }
-            
         }
-
-        if(grids[0].load == 100 || grids[1].load == 100 || grids[2].load == 100 || grids[3].load == 100 || grids[4].load == 100 ){
-            break;
+        
+        int failure = 0;
+        for(int i = 0; i < GRID_SIZE; i++){
+            if(grids[i].load == 100){
+                failure = 1;
+                break;
+            }
         }
+        if (failure) {break;}
 
         if (c == 'q' || c == 'Q'){ break; }
         if(c == KEY_RESIZE){ resize_term(0,0); }
@@ -147,23 +150,11 @@ void drawGrids(PowerStations grids[], int size, int startX, int startY){
 }
 
 void initializeGrids(PowerStations grids[]){
-    strcpy(grids[0].nodeName, "MasTec HQ");
-    grids[0].load = 45;
-    grids[0].status = 0;
-
-    strcpy(grids[1].nodeName, "Google HQ");
-    grids[1].load = 55;
-    grids[1].status = 0;
-
-    strcpy(grids[2].nodeName, "Intel HQ");
-    grids[2].load = 65;
-    grids[2].status = 0;
-
-    strcpy(grids[3].nodeName, "Apple HQ");
-    grids[3].load = 50;
-    grids[3].status = 0;
-
-    strcpy(grids[4].nodeName, "HP HQ");
-    grids[4].load = 40;
-    grids[4].status = 0;
+    int loads[GRID_SIZE] = {45, 55, 65, 55, 45};
+    char nodes[GRID_SIZE][10] = {"MasTec HQ", "Google HQ", "Intel HQ", "Apple HQ", "HP HQ"};
+    for(int i = 0; i < GRID_SIZE; i++){
+        strcpy(grids[i].nodeName, nodes[i]);
+        grids[i].load = loads[i];
+        grids[i].status = 0;
+    }
 }
